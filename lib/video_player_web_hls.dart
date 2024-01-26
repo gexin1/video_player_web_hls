@@ -86,6 +86,7 @@ class VideoPlayerPluginHls extends VideoPlayerPlatform {
     videoElement.attributes['playsinline'] = 'true';
     videoElement.attributes['autoplay'] = 'true';
     videoElement.attributes['controls'] = 'false';
+    print("videoElement attributes");
     // TODO(hterkelsen): Use initialization parameters once they are available
     ui.platformViewRegistry.registerViewFactory(
         'videoPlayer-$textureId', (int viewId) => videoElement);
