@@ -71,14 +71,14 @@ class VideoPlayer {
   /// to react to them / expose them through the [VideoPlayer.events] stream.
   Future<void> initialize() async {
     _videoElement
-      ..autoplay = false
+      ..autoplay = true
       ..controls = false;
 
     // Allows Safari iOS to play the video inline
     _videoElement.setAttribute('playsinline', 'true');
 
     // Set autoplay to false since most browsers won't autoplay a video unless it is muted
-    _videoElement.setAttribute('autoplay', 'false');
+    _videoElement.setAttribute('autoplay', 'true');
 
     if (await shouldUseHlsLibrary()) {
       try {
@@ -323,9 +323,9 @@ class VideoPlayer {
   bool canPlayHlsNatively() {
     bool canPlayHls = false;
     try {
-      final String canPlayType = _videoElement.canPlayType('application/vnd.apple.mpegurl');
-      canPlayHls =
-          canPlayType != '';
+      final String canPlayType =
+          _videoElement.canPlayType('application/vnd.apple.mpegurl');
+      canPlayHls = canPlayType != '';
     } catch (e) {}
     return canPlayHls;
   }
